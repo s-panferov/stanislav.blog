@@ -1,0 +1,96 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+
+// Get all unique tags from all posts
+const posts = await getCollection('blog');
+const tags = [...new Set(posts.flatMap(post => post.data.tags || []))].sort();
+
+// Count posts per tag
+const tagCounts = tags.reduce((acc, tag) => {
+	acc[tag] = posts.filter(post => post.data.tags?.includes(tag)).length;
+	return acc;
+}, {} as Record<string, number>);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Tags - ${SITE_TITLE}`} description={`Browse all tags on ${SITE_TITLE}`} />
+		<style>
+			main {
+				width: 960px;
+			}
+			h1 {
+				font-size: 2rem;
+				font-weight: 600;
+				margin-bottom: 2rem;
+			}
+			.tags-container {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1rem;
+				margin-bottom: 2rem;
+			}
+			.tag-card {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				padding: 1.5rem;
+				background-color: var(--bg-secondary);
+				border: 1px solid var(--border);
+				border-radius: 8px;
+				text-decoration: none;
+				transition: all 0.3s ease;
+				min-width: 150px;
+			}
+			.tag-card:hover {
+				transform: translateY(-4px);
+				box-shadow: var(--box-shadow);
+				border-color: var(--accent);
+			}
+			.tag-name {
+				font-size: 1.2rem;
+				font-weight: 600;
+				color: var(--text-heading);
+				margin-bottom: 0.5rem;
+			}
+			.tag-count {
+				font-size: 0.9rem;
+				color: var(--text-secondary);
+			}
+			.description {
+				color: var(--text-secondary);
+				margin-bottom: 2rem;
+			}
+			@media (max-width: 720px) {
+				.tags-container {
+					gap: 0.5rem;
+				}
+				.tag-card {
+					min-width: calc(50% - 0.25rem);
+					padding: 1rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>All Tags</h1>
+			<p class="description">Click on a tag to see all posts with that tag.</p>
+			<div class="tags-container">
+				{tags.map((tag) => (
+					<a href={`/tags/${tag}/`} class="tag-card">
+						<span class="tag-name">#{tag}</span>
+						<span class="tag-count">{tagCounts[tag]} post{tagCounts[tag] !== 1 ? 's' : ''}</span>
+					</a>
+				))}
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
