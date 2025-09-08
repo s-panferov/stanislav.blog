@@ -63,7 +63,7 @@ body {
 	transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
 	body {
 		font-size: 18px;
 		font-weight: 600;
@@ -168,7 +168,7 @@ hr {
 	border: none;
 	border-top: 1px solid var(--border);
 }
-@media (max-width: 720px) {
+@media (max-width: 900px) {
 	body {
 		font-size: 13px;
 	}
