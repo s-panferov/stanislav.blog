@@ -55,9 +55,9 @@ body {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: var(--text-primary);
-	font-size: 15px;
+	font-size: 16px;
 	line-height: 1.7;
-	font-weight: 400;
+	font-weight: 600;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	transition: background-color 0.3s ease, color 0.3s ease;
@@ -65,8 +65,8 @@ body {
 
 @media (max-width: 720px) {
 	body {
-		font-size: 16px;
-		font-weight: 450;
+		font-size: 18px;
+		font-weight: 600;
 		line-height: 1.8;
 	}
 }
