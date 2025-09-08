@@ -35,7 +35,12 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
 				max-width: calc(100% - 2em);
 				margin: auto;
 				padding: 1em;
-				color: rgb(var(--gray-dark));
+				color: var(--text-primary);
+			}
+			@media (max-width: 720px) {
+				.prose {
+					padding: 1em 0.5em;
+				}
 			}
 			.title {
 				margin-bottom: 1em;
