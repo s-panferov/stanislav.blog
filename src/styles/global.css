@@ -55,9 +55,9 @@ body {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: var(--text-primary);
-	font-size: 16px;
+	font-size: 17px;
 	line-height: 1.7;
-	font-weight: 600;
+	font-weight: 400;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	transition: background-color 0.3s ease, color 0.3s ease;
@@ -65,8 +65,8 @@ body {
 
 @media (max-width: 900px) {
 	body {
-		font-size: 18px;
-		font-weight: 600;
+		font-size: 20px;
+		font-weight: 400;
 		line-height: 1.8;
 	}
 }
@@ -144,7 +144,7 @@ code {
 	border-radius: 3px;
 	font-family: var(--font-mono);
 	font-size: 0.9em;
-	font-weight: 450;
+	font-weight: 400;
 }
 pre {
 	padding: 1em;
