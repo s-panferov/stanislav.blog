@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
+import { getTagColor } from '../../utils/tagColors';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
 // Get all unique tags from all posts
@@ -40,27 +41,25 @@ const tagCounts = tags.reduce((acc, tag) => {
 				flex-direction: column;
 				align-items: center;
 				padding: 1.5rem;
-				background-color: var(--bg-secondary);
-				border: 1px solid var(--border);
 				border-radius: 8px;
 				text-decoration: none;
 				transition: all 0.3s ease;
 				min-width: 150px;
+				border: 2px solid transparent;
 			}
 			.tag-card:hover {
 				transform: translateY(-4px);
-				box-shadow: var(--box-shadow);
-				border-color: var(--accent);
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+				filter: brightness(1.1);
 			}
 			.tag-name {
 				font-size: 1.2rem;
 				font-weight: 600;
-				color: var(--text-heading);
 				margin-bottom: 0.5rem;
 			}
 			.tag-count {
 				font-size: 0.9rem;
-				color: var(--text-secondary);
+				opacity: 0.8;
 			}
 			.description {
 				color: var(--text-secondary);
@@ -83,12 +82,19 @@ const tagCounts = tags.reduce((acc, tag) => {
 			<h1>All Tags</h1>
 			<p class="description">Click on a tag to see all posts with that tag.</p>
 			<div class="tags-container">
-				{tags.map((tag) => (
-					<a href={`/tags/${tag}/`} class="tag-card">
-						<span class="tag-name">#{tag}</span>
-						<span class="tag-count">{tagCounts[tag]} post{tagCounts[tag] !== 1 ? 's' : ''}</span>
-					</a>
-				))}
+				{tags.map((tag) => {
+					const color = getTagColor(tag);
+					return (
+						<a 
+							href={`/tags/${tag}/`} 
+							class="tag-card"
+							style={`background-color: ${color.bg}; color: ${color.text};`}
+						>
+							<span class="tag-name">#{tag}</span>
+							<span class="tag-count">{tagCounts[tag]} post{tagCounts[tag] !== 1 ? 's' : ''}</span>
+						</a>
+					);
+				})}
 			</div>
 		</main>
 		<Footer />
