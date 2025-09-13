@@ -2,7 +2,7 @@
 title: 'Setting up Protocol Buffer compilation with Bazel and Rust'
 description: 'How to build a custom proto compilation pipeline when the official rules_rust documentation no longer works with modern tonic versions'
 pubDate: 'Sep 01 2025'
-heroImage: '../../assets/blog-placeholder-4.jpg'
+heroImage: '../../assets/bazel-tonic.png'
 tags: ['bazel', 'rust', 'protobuf', 'build-systems', 'grpc', 'tonic']
 ---
 
