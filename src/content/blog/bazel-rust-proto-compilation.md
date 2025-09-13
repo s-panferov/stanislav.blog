@@ -20,7 +20,7 @@ We built a three-part system in the `proto/` folder:
 
 ### 1. Custom Compiler Binary
 
-Instead of relying on rules_rust's prost toolchain, we created our own compiler:
+Instead of relying on `rules_rust`'s prost toolchain, we use the official `tonic-build` ecosystem:
 
 ```rust
 // proto/src/main.rs
@@ -32,14 +32,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .out_dir(&out_dir)
         .compile_protos(&["./protos/hello.proto"], &["./protos"])?;
 
-    for entry in std::fs::read_dir(&out_dir)? {
-        let entry = entry?;
-        let path = entry.path();
-        if path.is_file() {
-            println!("File: {}", path.display());
-        }
-    }
-
     Ok(())
 }
 ```
@@ -48,7 +40,6 @@ This compiler:
 - Reads the `OUT_DIR` environment variable to determine where to generate code
 - Uses `tonic_prost_build` directly to compile proto files
 - Generates both message structs and gRPC service traits
-- Lists generated files for debugging purposes
 
 ### 2. Bazel Build Configuration
 
@@ -74,7 +65,7 @@ genrule(
 rust_library(
     name = "proto",
     srcs = [":generated/hello.rs"],
-    crate_name = "umka_proto",
+    crate_name = "hello_proto",
     deps = [
         "@crates//:prost",
         "@crates//:tonic",
@@ -82,30 +73,13 @@ rust_library(
 )
 ```
 
-### 3. Why This Approach Works
-
-Our custom solution has several advantages:
-
-1. **Version Compatibility**: We control the exact versions of prost and tonic through Cargo.toml
-2. **Simplicity**: No complex toolchain configuration needed
-3. **Flexibility**: Easy to customize the compilation process
-4. **Reliability**: Direct use of tonic_prost_build API ensures compatibility
-
-## The Key Insight
-
-The critical part is using a `genrule` to run our custom compiler binary. This gives us full control over:
-- Environment variables passed to the compiler
-- Working directory during compilation
-- Output file locations
-- Dependencies and rebuilding logic
-
 ## Usage in the Project
 
 Once compiled, the generated proto code integrates seamlessly:
 
 ```rust
-use umka_proto::hello_service_server::HelloService;
-use umka_proto::{HelloRequest, HelloResponse};
+use hello_proto::hello_service_server::HelloService;
+use hello_proto::{HelloRequest, HelloResponse};
 
 #[tonic::async_trait]
 impl HelloService for MyService {
@@ -117,14 +91,3 @@ impl HelloService for MyService {
     }
 }
 ```
-
-## Lessons Learned
-
-1. **Don't Fight the Tools**: When official integrations break, building a custom solution can be simpler than trying to fix version conflicts
-2. **Keep It Simple**: Our entire compiler is under 20 lines of code
-3. **Leverage Bazel's Flexibility**: `genrule` is powerful enough to integrate any code generation tool
-4. **Document Your Decisions**: Future maintainers need to understand why we diverged from official documentation
-
-## Conclusion
-
-While it would be ideal if the official rules_rust proto support worked out of the box, our custom solution is actually quite elegant. It's explicit, maintainable, and gives us complete control over the proto compilation process. Sometimes, the best solution is the one you build yourself.
