@@ -45,7 +45,7 @@ This compiler:
 
 The BUILD.bazel file in the proto folder orchestrates the compilation:
 
-```starlark
+```python
 rust_binary(
     name = "compiler",
     srcs = ["src/main.rs"],
