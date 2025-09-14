@@ -1,0 +1,155 @@
+---
+import { getCollection } from "astro:content";
+import FormattedDate from "./FormattedDate.astro";
+import Tag from "./Tag.astro";
+
+interface Props {
+  currentPostId: string;
+  currentTags?: string[];
+}
+
+const { currentPostId, currentTags = [] } = Astro.props;
+
+// Get all posts except the current one
+const allPosts = await getCollection("blog");
+const otherPosts = allPosts
+  .filter((post) => post.id !== currentPostId)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Calculate relevance score for each post
+const postsWithScores = otherPosts.map((post) => {
+  const postTags = post.data.tags || [];
+  // Count how many tags match
+  const matchingTags = postTags.filter((tag) => currentTags.includes(tag));
+  const score = matchingTags.length;
+  
+  return {
+    post,
+    score,
+    matchingTags,
+  };
+});
+
+// Sort by score (descending) and take top 3
+// If there are ties in score, newer posts come first
+const relatedPosts = postsWithScores
+  .sort((a, b) => {
+    if (b.score !== a.score) return b.score - a.score;
+    return b.post.data.pubDate.valueOf() - a.post.data.pubDate.valueOf();
+  })
+  .slice(0, 3)
+  .filter((item) => item.score > 0 || postsWithScores.every(p => p.score === 0)); // Show recent posts if no tag matches
+
+// If no posts with matching tags, just show 3 most recent
+const finalPosts = relatedPosts.length > 0 
+  ? relatedPosts.map(item => item.post)
+  : otherPosts.slice(0, 3);
+---
+
+{finalPosts.length > 0 && (
+  <section class="read-next">
+    <h2>Read Next</h2>
+    <div class="related-posts">
+      {finalPosts.map((post) => (
+        <article class="related-post">
+          <a href={`/blog/${post.id}/`}>
+            <h3>{post.data.title}</h3>
+            <div class="meta">
+              <FormattedDate date={post.data.pubDate} />
+            </div>
+            {post.data.description && (
+              <p class="description">{post.data.description}</p>
+            )}
+            {post.data.tags && post.data.tags.length > 0 && (
+              <div class="tags">
+                {post.data.tags.slice(0, 3).map((tag) => (
+                  <Tag tag={tag} />
+                ))}
+              </div>
+            )}
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+)}
+
+<style>
+  .read-next {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .read-next h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-heading);
+  }
+
+  .related-posts {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .related-post {
+    padding: 1.25rem;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .related-post:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow);
+  }
+
+  .related-post a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .related-post h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--text-heading);
+    line-height: 1.3;
+  }
+
+  .related-post .meta {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+  }
+
+  .related-post .description {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    margin: 0.75rem 0;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .related-post .tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+  }
+
+  .related-post a:hover h3 {
+    color: var(--accent);
+  }
+
+  @media (max-width: 900px) {
+    .related-posts {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
