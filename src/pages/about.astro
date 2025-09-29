@@ -5,181 +5,182 @@ import { Image } from "astro:assets";
 ---
 
 <Layout
-  title="About Me"
-  description="Software Engineering Leader specializing in web platform, performance, and developer tools"
-  pubDate={new Date("January 09 2024")}
+	id="about-me"
+	title="About Me"
+	description="Software Engineering Leader specializing in web platform, performance, and developer tools"
+	pubDate={new Date("January 09 2024")}
 >
-  <div style="text-align: center;">
-    <Image src={Avatar} alt="Stanislav Panferov" style={{ maxWidth: "100%" }} />
-  </div>
-  <p>
-    Hello! I'm <strong>Stanislav Panferov</strong>, a passionate software
-    engineering leader based in the San Francisco Bay Area. With a Master's
-    degree and deep expertise in system programming and web technologies, I love
-    helping teams build innovative software that pushes the boundaries of what's
-    possible.
-  </p>
+	<div style="text-align: center;">
+		<Image src={Avatar} alt="Stanislav Panferov" style={{ maxWidth: "100%" }} />
+	</div>
+	<p>
+		Hello! I'm <strong>Stanislav Panferov</strong>, a passionate software
+		engineering leader based in the San Francisco Bay Area. With a Master's
+		degree and deep expertise in system programming and web technologies, I love
+		helping teams build innovative software that pushes the boundaries of what's
+		possible.
+	</p>
 
-  <h2>Current Role</h2>
-  <p>
-    I'm currently working at <strong>Snowflake</strong> as a Software Engineer, where
-    I focus on developer tools, Bazel integration, and UI platform development. My
-    work involves improving developer productivity and building robust infrastructure
-    that powers Snowflake's engineering ecosystem.
-  </p>
+	<h2>Current Role</h2>
+	<p>
+		I'm currently working at <strong>Snowflake</strong> as a Software Engineer, where
+		I focus on developer tools, Bazel integration, and UI platform development. My
+		work involves improving developer productivity and building robust infrastructure
+		that powers Snowflake's engineering ecosystem.
+	</p>
 
-  <h2>Professional Journey</h2>
+	<h2>Professional Journey</h2>
 
-  <h3>Figma (Jan 2023 - Jul 2024)</h3>
-  <p>
-    At Figma, I worked as a Software Engineer on performance optimization using
-    WebAssembly. I led initiatives including developing a C++/WASM DWARF
-    debugging system, implementing client-side error symbolication, and creating
-    memory observability tools. I also provided technical leadership and
-    mentorship to junior team members.
-  </p>
+	<h3>Figma (Jan 2023 - Jul 2024)</h3>
+	<p>
+		At Figma, I worked as a Software Engineer on performance optimization using
+		WebAssembly. I led initiatives including developing a C++/WASM DWARF
+		debugging system, implementing client-side error symbolication, and creating
+		memory observability tools. I also provided technical leadership and
+		mentorship to junior team members.
+	</p>
 
-  <h3>Meta (Sep 2020 - Dec 2022)</h3>
-  <p>
-    As a Software Engineer at Meta, I worked on bringing the web platform to
-    AR/VR space through the Oculus Browser (Chromium-based). I also contributed
-    to developing a high-performance IPC/RPC solution for microkernel OS,
-    including IDL language design and Rust-based compiler development.
-    Additionally, I worked on next-generation language design for AR/VR devices
-    with LLVM IR generation.
-  </p>
+	<h3>Meta (Sep 2020 - Dec 2022)</h3>
+	<p>
+		As a Software Engineer at Meta, I worked on bringing the web platform to
+		AR/VR space through the Oculus Browser (Chromium-based). I also contributed
+		to developing a high-performance IPC/RPC solution for microkernel OS,
+		including IDL language design and Rust-based compiler development.
+		Additionally, I worked on next-generation language design for AR/VR devices
+		with LLVM IR generation.
+	</p>
 
-  <h3>
-    Innervate (formerly RevJet) - Director of Engineering (Jan 2016 - Sep 2020)
-  </h3>
-  <p>
-    Technical Lead of a TypeScript/FullStack development team. Owned more than
-    70 interconnected SPA applications and backends, including video
-    builder/encoding, email builder, social/native ad builder and integrations,
-    analytics, and more.
-  </p>
-  <p>Key responsibilities included:</p>
-  <ul>
-    <li>
-      Developing ReactJS + TypeScript UI and data management libraries with
-      common application components and logic to speed up development and
-      improve maintainability
-    </li>
-    <li>
-      Owning various technically challenging business projects and SPA
-      applications
-    </li>
-    <li>Technology evangelism and internal development support</li>
-    <li>Applications architecture development at scale</li>
-    <li>Development process improvements and engineering culture</li>
-    <li>Product design negotiations and cross-team communications</li>
-    <li>Mentorship and people growth</li>
-  </ul>
-  <p>
-    <strong>Technologies:</strong> TypeScript, JavaScript, ReactJS, Rust, NodeJS,
-    Redux, WebPack, GraphQL, Apollo, Relay, MobX, Kubernetes
-  </p>
+	<h3>
+		Innervate (formerly RevJet) - Director of Engineering (Jan 2016 - Sep 2020)
+	</h3>
+	<p>
+		Technical Lead of a TypeScript/FullStack development team. Owned more than
+		70 interconnected SPA applications and backends, including video
+		builder/encoding, email builder, social/native ad builder and integrations,
+		analytics, and more.
+	</p>
+	<p>Key responsibilities included:</p>
+	<ul>
+		<li>
+			Developing ReactJS + TypeScript UI and data management libraries with
+			common application components and logic to speed up development and
+			improve maintainability
+		</li>
+		<li>
+			Owning various technically challenging business projects and SPA
+			applications
+		</li>
+		<li>Technology evangelism and internal development support</li>
+		<li>Applications architecture development at scale</li>
+		<li>Development process improvements and engineering culture</li>
+		<li>Product design negotiations and cross-team communications</li>
+		<li>Mentorship and people growth</li>
+	</ul>
+	<p>
+		<strong>Technologies:</strong> TypeScript, JavaScript, ReactJS, Rust, NodeJS,
+		Redux, WebPack, GraphQL, Apollo, Relay, MobX, Kubernetes
+	</p>
 
-  <h3>Alfa-Bank - Software Engineer (Mar 2015 - Dec 2015)</h3>
-  <p>
-    Built a new technological foundation for the next generation of banking
-    products.
-  </p>
-  <ul>
-    <li>
-      Development of a modern ReactJS + TypeScript UI library containing common
-      components using Alfa-Bank's visual style
-    </li>
-    <li>TypeScript technology evangelism</li>
-    <li>
-      Technical leadership in several product teams, delivering production
-      products
-    </li>
-    <li>Developer interviews</li>
-    <li>Supporting Scrum processes within teams</li>
-    <li>Application architecture development</li>
-  </ul>
-  <p>
-    <strong>Technologies:</strong> TypeScript, JavaScript, ReactJS, NodeJS, Hapi,
-    Redux, WebPack, Docker, Consul<br />
-    <strong>Processes:</strong> Scrum, Kanban
-  </p>
+	<h3>Alfa-Bank - Software Engineer (Mar 2015 - Dec 2015)</h3>
+	<p>
+		Built a new technological foundation for the next generation of banking
+		products.
+	</p>
+	<ul>
+		<li>
+			Development of a modern ReactJS + TypeScript UI library containing common
+			components using Alfa-Bank's visual style
+		</li>
+		<li>TypeScript technology evangelism</li>
+		<li>
+			Technical leadership in several product teams, delivering production
+			products
+		</li>
+		<li>Developer interviews</li>
+		<li>Supporting Scrum processes within teams</li>
+		<li>Application architecture development</li>
+	</ul>
+	<p>
+		<strong>Technologies:</strong> TypeScript, JavaScript, ReactJS, NodeJS, Hapi,
+		Redux, WebPack, Docker, Consul<br />
+		<strong>Processes:</strong> Scrum, Kanban
+	</p>
 
-  <h3>NPTV - Director of Software Engineering (Apr 2013 - Aug 2014)</h3>
-  <p>
-    NPTV was the world's most advanced cloud-based interactive media and video
-    generation platform. Led a team of 8 programmers with JavaScript, C++,
-    Erlang, and Ruby expertise. Responsible for developing and supporting a
-    sophisticated SDK and Platform for internal and external JavaScript
-    developers using V8, JavaScript, and extensive C++ code. Also responsible
-    for new product development on top of the SDK.
-  </p>
-  <p>
-    <strong>Technologies:</strong> JavaScript, ReactJS, Ruby, Rails, Grape, PostgreSQL,
-    C++, Boost, Erlang
-  </p>
+	<h3>NPTV - Director of Software Engineering (Apr 2013 - Aug 2014)</h3>
+	<p>
+		NPTV was the world's most advanced cloud-based interactive media and video
+		generation platform. Led a team of 8 programmers with JavaScript, C++,
+		Erlang, and Ruby expertise. Responsible for developing and supporting a
+		sophisticated SDK and Platform for internal and external JavaScript
+		developers using V8, JavaScript, and extensive C++ code. Also responsible
+		for new product development on top of the SDK.
+	</p>
+	<p>
+		<strong>Technologies:</strong> JavaScript, ReactJS, Ruby, Rails, Grape, PostgreSQL,
+		C++, Boost, Erlang
+	</p>
 
-  <h2>Technical Expertise</h2>
+	<h2>Technical Expertise</h2>
 
-  <h3>Languages</h3>
-  <p>
-    <strong>Primary:</strong> TypeScript, JavaScript, Rust, C/C++, Go<br />
-    <strong>Additional:</strong> SQL, WebAssembly, and various domain-specific languages
-  </p>
+	<h3>Languages</h3>
+	<p>
+		<strong>Primary:</strong> TypeScript, JavaScript, Rust, C/C++, Go<br />
+		<strong>Additional:</strong> SQL, WebAssembly, and various domain-specific languages
+	</p>
 
-  <h3>Specializations</h3>
-  <ul>
-    <li>
-      <strong>Web Technologies:</strong> React, Node.js, State Management, Performance
-      Optimization, GraphQL
-    </li>
-    <li>
-      <strong>System Programming:</strong> Distributed Systems, WebAssembly, IPC/RPC,
-      AR/VR domains
-    </li>
-    <li>
-      <strong>DevOps & Tools:</strong> Kubernetes, Docker, Bazel build systems
-    </li>
-    <li>
-      <strong>Leadership:</strong> Technical leadership, hiring, mentorship, and
-      team building
-    </li>
-  </ul>
+	<h3>Specializations</h3>
+	<ul>
+		<li>
+			<strong>Web Technologies:</strong> React, Node.js, State Management, Performance
+			Optimization, GraphQL
+		</li>
+		<li>
+			<strong>System Programming:</strong> Distributed Systems, WebAssembly, IPC/RPC,
+			AR/VR domains
+		</li>
+		<li>
+			<strong>DevOps & Tools:</strong> Kubernetes, Docker, Bazel build systems
+		</li>
+		<li>
+			<strong>Leadership:</strong> Technical leadership, hiring, mentorship, and
+			team building
+		</li>
+	</ul>
 
-  <h2>What Drives Me</h2>
-  <p>
-    I'm passionate about performance optimization, developer experience, and
-    building tools that make complex systems more accessible. Whether it's
-    modularizing a TypeScript/C++/WASM codebase, designing compiler
-    infrastructure, or mentoring engineers, I thrive on technical challenges
-    that have real impact.
-  </p>
+	<h2>What Drives Me</h2>
+	<p>
+		I'm passionate about performance optimization, developer experience, and
+		building tools that make complex systems more accessible. Whether it's
+		modularizing a TypeScript/C++/WASM codebase, designing compiler
+		infrastructure, or mentoring engineers, I thrive on technical challenges
+		that have real impact.
+	</p>
 
-  <p>
-    When I'm not coding, you'll find me exploring new technology trends,
-    contributing to open-source projects, or spending quality time with my kids.
-  </p>
+	<p>
+		When I'm not coding, you'll find me exploring new technology trends,
+		contributing to open-source projects, or spending quality time with my kids.
+	</p>
 
-  <h2>Connect</h2>
-  <p>
-    Feel free to reach out for collaboration, technical discussions, or just to
-    say hello!
-  </p>
-  <ul>
-    <li>
-      Email: <a href="mailto:stanislav@panferov.dev">stanislav@panferov.dev</a>
-    </li>
-    <li>
-      GitHub: <a href="https://github.com/s-panferov" target="_blank"
-        >@s-panferov</a
-      >
-    </li>
-    <li>
-      LinkedIn: <a
-        href="https://www.linkedin.com/in/stanislavpanferov/"
-        target="_blank">stanislavpanferov</a
-      >
-    </li>
-    <li>Location: Redwood City, Bay Area</li>
-  </ul>
+	<h2>Connect</h2>
+	<p>
+		Feel free to reach out for collaboration, technical discussions, or just to
+		say hello!
+	</p>
+	<ul>
+		<li>
+			Email: <a href="mailto:stanislav@panferov.dev">stanislav@panferov.dev</a>
+		</li>
+		<li>
+			GitHub: <a href="https://github.com/s-panferov" target="_blank"
+				>@s-panferov</a
+			>
+		</li>
+		<li>
+			LinkedIn: <a
+				href="https://www.linkedin.com/in/stanislavpanferov/"
+				target="_blank">stanislavpanferov</a
+			>
+		</li>
+		<li>Location: Redwood City, Bay Area</li>
+	</ul>
 </Layout>

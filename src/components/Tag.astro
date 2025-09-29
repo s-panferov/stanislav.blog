@@ -1,57 +1,57 @@
 ---
-import { getTagColor } from '../utils/tagColors';
+import { getTagColor } from "../utils/tagColors";
 
 export interface Props {
-  tag: string;
-  active?: boolean;
+	tag: string;
+	active?: boolean;
 }
 
 const { tag, active = false } = Astro.props;
 const color = getTagColor(tag);
 ---
 
-<a 
-  href={`/tags/${tag}/`} 
-  class={`tag ${active ? 'active' : ''}`}
-  style={`--tag-bg: ${color.bg}; --tag-text: ${color.text};`}
+<a
+	href={`/tags/${tag}/`}
+	class={`tag ${active ? "active" : ""}`}
+	style={`--tag-bg: ${color.bg}; --tag-text: ${color.text};`}
 >
-  #{tag}
+	#{tag}
 </a>
 
 <style>
-  .tag {
-    display: inline-block;
-    padding: 0.2rem 0.6rem;
-    background-color: var(--tag-bg);
-    color: var(--tag-text);
-    border-radius: 4px;
-    font-size: 0.75rem;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
-    font-weight: 500;
-    white-space: nowrap;
-  }
-  
-  .tag:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    filter: brightness(1.1);
-  }
-  
-  .tag.active {
-    filter: brightness(1.2);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* Ensure good contrast in both themes */
-  :root {
-    --tag-lightness: 40%;
-    --tag-text-lightness: 95%;
-  }
-  
-  [data-theme="dark"] {
-    --tag-lightness: 65%;
-    --tag-text-lightness: 10%;
-  }
+	.tag {
+		display: inline-block;
+		padding: 0.2rem 0.6rem;
+		background-color: var(--tag-bg);
+		color: var(--tag-text);
+		border-radius: 4px;
+		font-size: 0.75rem;
+		text-decoration: none;
+		transition: all 0.2s ease;
+		border: 1px solid transparent;
+		font-weight: 500;
+		white-space: nowrap;
+	}
+
+	.tag:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		filter: brightness(1.1);
+	}
+
+	.tag.active {
+		filter: brightness(1.2);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+	}
+
+	/* Ensure good contrast in both themes */
+	:root {
+		--tag-lightness: 40%;
+		--tag-text-lightness: 95%;
+	}
+
+	[data-theme="dark"] {
+		--tag-lightness: 65%;
+		--tag-text-lightness: 10%;
+	}
 </style>

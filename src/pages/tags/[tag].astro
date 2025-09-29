@@ -1,25 +1,27 @@
 ---
-import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import FormattedDate from '../../components/FormattedDate.astro';
-import Header from '../../components/Header.astro';
-import Tag from '../../components/Tag.astro';
-import { SITE_TITLE } from '../../consts';
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import Header from "../../components/Header.astro";
+import Tag from "../../components/Tag.astro";
+import { SITE_TITLE } from "../../consts";
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	const uniqueTags = [...new Set(posts.flatMap(post => post.data.tags || []))];
-	
-	return uniqueTags.map(tag => {
+	const posts = await getCollection("blog");
+	const uniqueTags = [
+		...new Set(posts.flatMap((post) => post.data.tags || [])),
+	];
+
+	return uniqueTags.map((tag) => {
 		const filteredPosts = posts
-			.filter(post => post.data.tags?.includes(tag))
+			.filter((post) => post.data.tags?.includes(tag))
 			.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-		
+
 		return {
 			params: { tag },
-			props: { posts: filteredPosts }
+			props: { posts: filteredPosts },
 		};
 	});
 }
@@ -31,9 +33,9 @@ const { posts } = Astro.props;
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead 
-			title={`Posts tagged "${tag}" - ${SITE_TITLE}`} 
-			description={`All posts tagged with "${tag}" on ${SITE_TITLE}`} 
+		<BaseHead
+			title={`Posts tagged "${tag}" - ${SITE_TITLE}`}
+			description={`All posts tagged with "${tag}" on ${SITE_TITLE}`}
 		/>
 		<style>
 			main {
@@ -135,7 +137,9 @@ const { posts } = Astro.props;
 		<main>
 			<a href="/tags" class="back-link">← All tags</a>
 			<h1>#{tag}</h1>
-			<p class="tag-description">Found {posts.length} post{posts.length !== 1 ? 's' : ''} with this tag.</p>
+			<p class="tag-description">
+				Found {posts.length} post{posts.length !== 1 ? "s" : ""} with this tag.
+			</p>
 			<section>
 				<ul>
 					{
@@ -143,7 +147,12 @@ const { posts } = Astro.props;
 							<li>
 								<a href={`/blog/${post.id}/`}>
 									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
+										<Image
+											width={720}
+											height={360}
+											src={post.data.heroImage}
+											alt=""
+										/>
 									)}
 									<h4 class="title">{post.data.title}</h4>
 									<p class="date">

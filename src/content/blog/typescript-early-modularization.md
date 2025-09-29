@@ -219,7 +219,7 @@ If you have an existing codebase:
 
 Teams that adopt package-based modularization typically see:
 
-**Before**: 
+**Before**:
 - Single monolithic TypeScript project
 - 15-20 minute full builds
 - 3-5 minute incremental builds
