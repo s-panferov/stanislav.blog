@@ -1,57 +1,19 @@
-import * as stylex from '@stylexjs/stylex';
 
-const styles = stylex.create({
-  footer: {
-    padding: '2em 1em 2em 1em',
-    background: 'linear-gradient(var(--gray-light), transparent)',
-    color: 'var(--gray)',
-    textAlign: 'center',
-  },
-  socialLinks: {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '1em',
-    marginTop: '1em',
-  },
-  socialLink: {
-    textDecoration: 'none',
-    color: 'var(--gray)',
-    transition: 'color 0.2s ease',
-  },
-  socialLinkHover: {
-    color: {
-      default: 'var(--gray)',
-      ':hover': 'var(--text-secondary)',
-    },
-  },
-  srOnly: {
-    border: 0,
-    padding: 0,
-    margin: 0,
-    position: 'absolute',
-    height: '1px',
-    width: '1px',
-    overflow: 'hidden',
-    clip: 'rect(1px, 1px, 1px, 1px)',
-    clipPath: 'inset(50%)',
-    whiteSpace: 'nowrap',
-  },
-});
 
 export default function Footer() {
   const today = new Date();
 
   return (
-    <footer {...stylex.props(styles.footer)}>
+    <footer >
       &copy; {today.getFullYear()} Stanislav Panferov. All rights reserved.
-      <div {...stylex.props(styles.socialLinks)}>
+      <div >
         <a
           href="https://github.com/s-panferov"
           target="_blank"
           rel="noopener noreferrer"
-          {...stylex.props(styles.socialLink, styles.socialLinkHover)}
+          
         >
-          <span {...stylex.props(styles.srOnly)}>Visit Stanislav's GitHub profile</span>
+          <span >Visit Stanislav's GitHub profile</span>
           <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32">
             <path
               fill="currentColor"

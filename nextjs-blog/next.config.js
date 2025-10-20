@@ -1,12 +1,12 @@
-const stylexPlugin = require('@stylexjs/nextjs-plugin');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  turbopack: {},
+  output: 'export',
+  basePath: '/nextjs-blog',
+  images: {
+    unoptimized: true,
+  },
+  trailingSlash: true,
 };
 
-module.exports = stylexPlugin({
-  rootDir: __dirname,
-  useCSSLayers: true,
-})(nextConfig);
+module.exports = nextConfig;

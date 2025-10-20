@@ -3,79 +3,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import * as stylex from '@stylexjs/stylex';
 import { SITE_TITLE } from '@/lib/consts';
-
-const styles = stylex.create({
-  header: {
-    margin: 0,
-    padding: '0 1em',
-    backgroundColor: 'var(--bg-primary)',
-    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
-    transition: 'background-color 0.3s ease',
-  },
-  nav: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  heading: {
-    margin: 0,
-    fontSize: '1em',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.1rem',
-  },
-  headingLink: {
-    textDecoration: 'none',
-    color: 'var(--text-heading)',
-  },
-  avatar: {
-    width: '32px',
-    height: '32px',
-    borderRadius: '50%',
-  },
-  internalLinks: {
-    display: 'flex',
-    gap: '0.5rem',
-  },
-  navLink: {
-    padding: '1em 0.5em',
-    color: 'var(--text-heading)',
-    borderBottom: '4px solid transparent',
-    textDecoration: 'none',
-  },
-  activeLink: {
-    borderBottomColor: 'var(--accent)',
-  },
-  socialLinks: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.5rem',
-  },
-  socialLink: {
-    display: 'flex',
-    alignItems: 'center',
-    color: 'var(--text-heading)',
-  },
-  srOnly: {
-    border: 0,
-    padding: 0,
-    margin: 0,
-    position: 'absolute',
-    height: '1px',
-    width: '1px',
-    overflow: 'hidden',
-    clip: 'rect(1px, 1px, 1px, 1px)',
-    clipPath: 'inset(50%)',
-    whiteSpace: 'nowrap',
-  },
-  hideMobile: {
-    '@media (max-width: 900px)': {
-      display: 'none',
-    },
-  },
-});
+import styles from './Header.module.css';
 
 export default function Header() {
   const pathname = usePathname();
@@ -86,48 +15,48 @@ export default function Header() {
   };
 
   return (
-    <header {...stylex.props(styles.header)}>
-      <nav {...stylex.props(styles.nav)}>
-        <h2 {...stylex.props(styles.heading)}>
+    <header className={styles.header}>
+      <nav className={styles.nav}>
+        <h2 className={styles.heading}>
           <Image
             src="/assets/ava.jpg"
             alt="Stanislav Panferov"
             width={32}
             height={32}
-            {...stylex.props(styles.avatar)}
+            className={styles.avatar}
           />
-          <Link href="/" {...stylex.props(styles.headingLink)}>
+          <Link href="/" className={styles.headingLink}>
             {SITE_TITLE}
           </Link>
         </h2>
-        <div {...stylex.props(styles.internalLinks)}>
+        <div className={styles.internalLinks}>
           <Link
             href="/"
-            {...stylex.props(styles.navLink, isActive('/') && styles.activeLink)}
+            className={`${styles.navLink} ${isActive('/') ? styles.activeLink : ''}`}
           >
             Blog
           </Link>
           <Link
             href="/tags"
-            {...stylex.props(styles.navLink, isActive('/tags') && styles.activeLink)}
+            className={`${styles.navLink} ${isActive('/tags') ? styles.activeLink : ''}`}
           >
             Tags
           </Link>
           <Link
             href="/about"
-            {...stylex.props(styles.navLink, isActive('/about') && styles.activeLink)}
+            className={`${styles.navLink} ${isActive('/about') ? styles.activeLink : ''}`}
           >
             About
           </Link>
         </div>
-        <div {...stylex.props(styles.socialLinks, styles.hideMobile)}>
+        <div className={`${styles.socialLinks} ${styles.hideMobile}`}>
           <a
             href="https://github.com/s-panferov"
             target="_blank"
             rel="noopener noreferrer"
-            {...stylex.props(styles.socialLink)}
+            className={styles.socialLink}
           >
-            <span {...stylex.props(styles.srOnly)}>Visit Stanislav's GitHub profile</span>
+            <span className="sr-only">Visit Stanislav's GitHub profile</span>
             <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32">
               <path
                 fill="currentColor"

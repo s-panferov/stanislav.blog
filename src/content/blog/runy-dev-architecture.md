@@ -1,5 +1,5 @@
 ---
-title: 'Runy.dev: A modern process management'
+title: 'runy.dev: A modern process management'
 description: 'Deep dive into the architecture of Runy - a developer console that simplifies process management with a Rust core, TypeScript SDK, and beautiful web interface'
 pubDate: 'Sep 14 2025'
 heroImage: '../../assets/blog-placeholder-4.jpg'
@@ -75,11 +75,11 @@ const ws = workspace(import.meta);
 
 ws.service("api-server", (s) => {
   s.autorun(); // Start automatically when workspace loads
-  
+
   s.run(async (ctx) => {
     // Complex initialization logic
     await setupDatabase();
-    
+
     // Start the actual process
     await ctx.process({
       alias: "api",

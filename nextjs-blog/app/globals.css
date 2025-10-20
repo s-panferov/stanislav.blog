@@ -46,6 +46,31 @@ html,
 body {
   padding: 0;
   margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.main-content {
+  width: 960px;
+  max-width: calc(100% - 2em);
+  margin: auto;
+  padding: 3em 1em;
+}
+
+@media (max-width: 900px) {
+  .main-content {
+    padding: 1em;
+  }
 }
 
 a {
