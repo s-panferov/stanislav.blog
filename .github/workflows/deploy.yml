@@ -35,8 +35,17 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build
+      - name: Build Astro site
         run: pnpm build
+
+      - name: Build Next.js blog
+        run: cd nextjs-blog && pnpm install && pnpm build
+
+      - name: Copy Next.js blog to dist
+        run: |
+          mkdir -p dist/nextjs-blog
+          cp -r nextjs-blog/out/* dist/nextjs-blog/
+          touch dist/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
