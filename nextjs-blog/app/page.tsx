@@ -1,31 +1,25 @@
 import Link from 'next/link';
 import { getAllPosts } from '@/lib/blog';
-import FormattedDate from '@/components/FormattedDate';
 
 
 export default function Home() {
   const posts = getAllPosts();
 
   return (
-    <section >
-      <ul >
+    <section>
+      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
         {posts.map((post) => (
-          <li key={post.id} >
-            <Link href={`/blog/${post.id}`} >
-              <div >
-                <div>
-                  <h4 >
-                    {post.title}
-                  </h4>
-                  <p >
-                    <FormattedDate date={post.pubDate} />
+          <li key={post.id} style={{ marginBottom: '2rem' }}>
+            <Link href={`/blog/${post.id}`} style={{ textDecoration: 'none' }}>
+              <div>
+                <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '1.5rem', fontWeight: 600, color: 'var(--color-text)' }}>
+                  {post.title}
+                </h4>
+                {post.description && (
+                  <p style={{ color: 'var(--color-gray-700)', margin: 0, lineHeight: '1.6' }}>
+                    {post.description}
                   </p>
-                  {post.description && (
-                    <p style={{ color: 'var(--color-gray-700)', marginTop: '0.5rem', lineHeight: '1.6' }}>
-                      {post.description}
-                    </p>
-                  )}
-                </div>
+                )}
               </div>
             </Link>
           </li>
