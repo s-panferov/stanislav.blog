@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { SITE_TITLE } from '@/lib/consts';
+import { withBasePath } from '@/lib/basePath';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -19,7 +20,7 @@ export default function Header() {
       <nav className={styles.nav}>
         <h2 className={styles.heading}>
           <Image
-            src="/nextjs-blog/assets/ava.jpg"
+            src={withBasePath('/assets/ava.jpg')}
             alt="Stanislav Panferov"
             width={32}
             height={32}

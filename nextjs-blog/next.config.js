@@ -3,6 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   output: 'export',
   basePath: '/nextjs-blog',
+  assetPrefix: '/nextjs-blog',
   images: {
     unoptimized: true,
   },
