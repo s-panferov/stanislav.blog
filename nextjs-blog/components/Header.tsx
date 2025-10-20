@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { SITE_TITLE } from '@/lib/consts';
 import { withBasePath } from '@/lib/basePath';
+import MobileMenu from './MobileMenu';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -26,11 +27,11 @@ export default function Header() {
             height={32}
             className={styles.avatar}
           />
-          <Link href="/" className={styles.headingLink}>
+          <Link href="/" className={`${styles.headingLink} ${styles.siteTitle}`}>
             {SITE_TITLE}
           </Link>
         </h2>
-        <div className={styles.internalLinks}>
+        <div className={`${styles.internalLinks} ${styles.hideOnMobile}`}>
           <Link
             href="/"
             className={`${styles.navLink} ${isActive('/') ? styles.activeLink : ''}`}
@@ -50,7 +51,7 @@ export default function Header() {
             About
           </Link>
         </div>
-        <div className={`${styles.socialLinks} ${styles.hideMobile}`}>
+        <div className={`${styles.socialLinks} ${styles.hideOnMobile}`}>
           <a
             href="https://github.com/s-panferov"
             target="_blank"
@@ -66,6 +67,7 @@ export default function Header() {
             </svg>
           </a>
         </div>
+        <MobileMenu />
       </nav>
     </header>
   );

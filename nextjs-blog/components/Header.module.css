@@ -64,3 +64,23 @@
     display: none;
   }
 }
+
+.hideOnMobile {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .hideOnMobile {
+    display: none !important;
+  }
+}
+
+.siteTitle {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .siteTitle {
+    display: none;
+  }
+}
