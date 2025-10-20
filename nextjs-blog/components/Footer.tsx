@@ -1,19 +1,19 @@
-
+import styles from './Footer.module.css';
 
 export default function Footer() {
   const today = new Date();
 
   return (
-    <footer >
+    <footer className={styles.footer}>
       &copy; {today.getFullYear()} Stanislav Panferov. All rights reserved.
-      <div >
+      <div className={styles.socialLinks}>
         <a
           href="https://github.com/s-panferov"
           target="_blank"
           rel="noopener noreferrer"
-          
+          className={styles.socialLink}
         >
-          <span >Visit Stanislav's GitHub profile</span>
+          <span className="sr-only">Visit Stanislav's GitHub profile</span>
           <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32">
             <path
               fill="currentColor"
