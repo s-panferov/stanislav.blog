@@ -19,7 +19,7 @@ export default function Header() {
       <nav className={styles.nav}>
         <h2 className={styles.heading}>
           <Image
-            src="/assets/ava.jpg"
+            src="/nextjs-blog/assets/ava.jpg"
             alt="Stanislav Panferov"
             width={32}
             height={32}
