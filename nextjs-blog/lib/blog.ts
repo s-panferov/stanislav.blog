@@ -18,19 +18,19 @@ export const posts: BlogPost[] = [
   },
   {
     id: 'typescript-early-modularization',
-    title: 'TypeScript Early Modularization',
-    description: 'How early modularization in TypeScript projects can improve code quality and maintainability',
-    pubDate: new Date('2025-09-10'),
+    title: 'Why Early Modularization Matters in TypeScript Projects',
+    description: 'How proper package-based modularization sets you up for success with build systems like Bazel and why you should avoid path aliases',
+    pubDate: new Date('2025-09-08'),
     heroImage: '/assets/blog-placeholder-3.jpg',
-    tags: ['typescript', 'architecture', 'best-practices'],
+    tags: ['typescript', 'architecture', 'bazel', 'build-systems', 'best-practices'],
   },
   {
     id: 'bazel-rust-proto-compilation',
-    title: 'Bazel Rust Proto Compilation',
-    description: 'Setting up Protocol Buffers compilation for Rust projects using Bazel',
-    pubDate: new Date('2025-09-05'),
-    heroImage: '/assets/blog-placeholder-2.jpg',
-    tags: ['rust', 'bazel', 'protobuf', 'build-systems'],
+    title: 'Setting up Protocol Buffer compilation with Bazel and Rust',
+    description: 'How to build a custom proto compilation pipeline when the official rules_rust documentation no longer works with modern tonic versions',
+    pubDate: new Date('2025-09-01'),
+    heroImage: '/assets/bazel-tonic.png',
+    tags: ['bazel', 'rust', 'protobuf', 'build-systems', 'grpc', 'tonic'],
   },
 ];
 
